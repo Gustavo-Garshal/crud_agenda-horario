@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: agenda-horario
+  datasource:
+    url: jdbc:sqlite:agenda_horario.db
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.SQLiteDialect
+        format_sql: true
