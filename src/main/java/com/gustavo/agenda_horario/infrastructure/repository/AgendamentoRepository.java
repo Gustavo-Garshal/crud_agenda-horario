@@ -5,16 +5,17 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
 
-    Agendamento findByServicoAndDataHoraBetween(
-            String servico, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim);
+    boolean existsByServicoAndDataHora(
+            String servico, LocalDateTime dataHora);
 
     @Transactional
     void deleteByDataHoraAndCliente(LocalDateTime dataHora, String cliente);
 
-    Agendamento findByDataHoraBetween(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim);
+    List<Agendamento> findByDataHoraBetween(LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim);
 
     Agendamento findByDataHoraAndCliente(LocalDateTime dataHora, String cliente);
 }
